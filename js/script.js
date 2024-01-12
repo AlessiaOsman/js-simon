@@ -11,6 +11,13 @@ const fourthNumberInput = document.getElementById('fourth-input')
 const fifthNumberInput = document.getElementById('fifth-input')
 const resultElement = document.getElementById('guessed-numbers')
 
+
+let firstNumber = firstNumberInput.value
+let secondNumber = secondNumberInput.value
+let thirdNumber = thirdNumberInput.value
+let fourthNumber = fourthNumberInput.value
+let fifthNumber = fifthNumberInput.value
+
 // Variabili iniziali
 
 const totalNumbers = 5;
@@ -29,6 +36,8 @@ const createNumberContainer = () => {
     
 };
 
+let cpuNumbers = []
+
 
 for (let i = 1; i <= totalNumbers; i++) {
 
@@ -37,8 +46,12 @@ for (let i = 1; i <= totalNumbers; i++) {
     const cpuNumberContainer = createNumberContainer()
     numbersContainer.appendChild(cpuNumberContainer)
     cpuNumberContainer.innerText = randomNumber
+    cpuNumbers.push(randomNumber)
 
 };
+
+console.log(cpuNumbers)
+// Creato countdown
 
 const countdown = setInterval(()=>{
     countdownElement.innerText = --seconds;
@@ -50,6 +63,18 @@ const countdown = setInterval(()=>{
         title.innerText = 'Te li ricordi? Inserisci ogni numero in una casella'
     }
 }, 1000);
+
+let userNumbers = []
+
+formElement.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+})
+
+
+
+
+
 
 
 
