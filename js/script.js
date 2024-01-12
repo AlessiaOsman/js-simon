@@ -14,6 +14,10 @@ const resultElement = document.getElementById('guessed-numbers')
 // Variabili iniziali
 
 const totalNumbers = 5;
+let seconds = 5;
+
+countdownElement.innerText = seconds;
+title.innerText = 'Hai 30 secondi per memorizzare questi numeri';
 
 // Creo le mie funzioni
 
@@ -23,7 +27,7 @@ const createNumberContainer = () => {
 
     return numberContainer
     
-}
+};
 
 
 for (let i = 1; i <= totalNumbers; i++) {
@@ -34,7 +38,20 @@ for (let i = 1; i <= totalNumbers; i++) {
     numbersContainer.appendChild(cpuNumberContainer)
     cpuNumberContainer.innerText = randomNumber
 
-}
+};
+
+const countdown = setInterval(()=>{
+    countdownElement.innerText = --seconds;
+    if(seconds === 0){
+        clearInterval(countdown);
+        numbersContainer.classList.add('d-none')
+        formElement.classList.remove('d-none')
+        countdownElement.classList.add('d-none')
+        title.innerText = 'Te li ricordi? Inserisci ogni numero in una casella'
+    }
+}, 1000);
+
+
 
 
 
