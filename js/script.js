@@ -12,16 +12,15 @@ const fifthNumberInput = document.getElementById('fifth-input')
 const resultElement = document.getElementById('guessed-numbers')
 
 
-let firstNumber = firstNumberInput.value
-let secondNumber = secondNumberInput.value
-let thirdNumber = thirdNumberInput.value
-let fourthNumber = fourthNumberInput.value
-let fifthNumber = fifthNumberInput.value
+
+
+
+
 
 // Variabili iniziali
 
 const totalNumbers = 5;
-let seconds = 5;
+let seconds = 1;
 
 countdownElement.innerText = seconds;
 title.innerText = 'Hai 30 secondi per memorizzare questi numeri';
@@ -36,6 +35,8 @@ const createNumberContainer = () => {
     
 };
 
+
+
 let cpuNumbers = []
 
 
@@ -47,8 +48,11 @@ for (let i = 1; i <= totalNumbers; i++) {
     numbersContainer.appendChild(cpuNumberContainer)
     cpuNumberContainer.innerText = randomNumber
     cpuNumbers.push(randomNumber)
-
 };
+
+
+
+
 
 console.log(cpuNumbers)
 // Creato countdown
@@ -64,12 +68,77 @@ const countdown = setInterval(()=>{
     }
 }, 1000);
 
-let userNumbers = []
+    
 
 formElement.addEventListener('submit', (e) => {
     e.preventDefault()
 
+
+
+    let numbers = []
+
+    let firstNumber = parseInt(firstNumberInput.value)
+    let secondNumber = parseInt(secondNumberInput.value)
+    let thirdNumber = parseInt(thirdNumberInput.value)
+    let fourthNumber = parseInt(fourthNumberInput.value)
+    let fifthNumber = parseInt(fifthNumberInput.value)
+
+    for(let i = 0; i<cpuNumbers.length; i++){
+
+        if(firstNumber === cpuNumbers[i]){
+           
+            numbers.push(cpuNumbers[i])
+            formElement.classList.add('d-none')
+            title.classList.add('d-none')
+
+        } else if (secondNumber === cpuNumbers[i]){
+            
+            numbers.push(cpuNumbers[i])
+            formElement.classList.add('d-none')
+            title.classList.add('d-none')
+
+        } else if (thirdNumber === cpuNumbers[i]){
+            
+            numbers.push(cpuNumbers[i])
+            formElement.classList.add('d-none')
+            title.classList.add('d-none')
+
+        } else if (fourthNumber === cpuNumbers[i]){
+            
+            numbers.push(cpuNumbers[i])
+            formElement.classList.add('d-none')
+            title.classList.add('d-none')
+
+        } else if (fifthNumber === cpuNumbers[i]){
+            
+            numbers.push(cpuNumbers[i])
+            formElement.classList.add('d-none')
+            title.classList.add('d-none')
+        }
+
+    
+    }
+
+    resultElement.classList.remove('d-none')
+
+
+    if (numbers.length === 0){
+        resultElement.innerText = 'Non hai indovinato nessun numero'
+        formElement.classList.add('d-none')
+        title.classList.add('d-none')
+    } else {
+        resultElement.innerText = `Hai indovinato ${numbers.length} numeri: ${numbers}`
+    }
+    
+    
+    
+
+
+
 })
+
+
+
 
 
 
